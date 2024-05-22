@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text } from "react-native";
 import styled from "styled-components/native";
 
@@ -26,8 +26,8 @@ export interface ILogin {
 }
 
 const Login = ({ goToRegister }) => {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = () => {
     console.log(email, password);
