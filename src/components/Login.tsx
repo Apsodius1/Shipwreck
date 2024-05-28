@@ -25,12 +25,12 @@ export interface ILogin {
   goToRegister: () => void;
 }
 
-const Login = ({ goToRegister }) => {
+const Login = ({ onSubmit, goToRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = () => {
-    console.log(email, password);
+    onSubmit(email, password);
   };
   return (
     <Container>

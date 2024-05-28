@@ -24,11 +24,11 @@ export interface ILogin {
   onSubmit: (email: string, password: string) => void;
 }
 
-const Register = () => {
+const Register = ({ onSubmit }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = () => console.log(email, password);
+  const handleSubmit = () => onSubmit(email, password);
 
   return (
     <Container>

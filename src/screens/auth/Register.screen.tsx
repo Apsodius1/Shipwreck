@@ -1,8 +1,10 @@
 import React from "react";
 import Register from "../../components/Register";
+import { useAuth } from "../../hooks/authContext";
 
 const RegisterScreen = () => {
-  return <Register />;
+  const auth = useAuth();
+  return <Register onSubmit={auth.register} />;
 };
 
 export default RegisterScreen;
