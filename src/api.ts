@@ -1,5 +1,4 @@
 const baseUrl = process.env.EXPO_PUBLIC_API_URL;
-console.log(baseUrl);
 const baseHeaders = {
   "Content-Type": "application/json",
   Accept: "application/json",
