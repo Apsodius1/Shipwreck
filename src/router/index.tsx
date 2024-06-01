@@ -7,6 +7,7 @@ import gameRoutes from "./game.router";
 
 const Router: React.FC = () => {
   const auth = useAuth();
+  console.log("auth up", auth.token, " .");
 
   if (auth.isLoading) {
     return (
@@ -23,9 +24,12 @@ const Router: React.FC = () => {
     );
   }
 
+  console.log("auth down", auth.token, " .");
+
   return (
     <NavigationContainer>
       {auth.token ? gameRoutes : authRoutes}
+      {/* {authRoutes} */}
     </NavigationContainer>
   );
 };

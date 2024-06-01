@@ -5,8 +5,8 @@ import ProfileScreen from "../screens/game/Profile.screen";
 const GameStack = createNativeStackNavigator();
 
 const gameRoutes = (
-  <GameStack.Navigator initialRouteName="Game">
-    <GameStack.Screen name="Game" component={ProfileScreen} />
+  <GameStack.Navigator initialRouteName="Profile">
+    <GameStack.Screen name="Profile" component={ProfileScreen} />
   </GameStack.Navigator>
 );
 

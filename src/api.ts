@@ -39,3 +39,15 @@ export const register = async (email: string, password: string) => {
 
   return data.accessToken;
 };
+
+export const getProfile = async (token: string) => {
+  const result = await fetch(`${baseUrl}/user/details/me`, {
+    method: "GET",
+    headers: {
+      ...baseHeaders,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return await result.json();
+};
