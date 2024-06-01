@@ -6,7 +6,11 @@ const GameStack = createNativeStackNavigator();
 
 const gameRoutes = (
   <GameStack.Navigator initialRouteName="Profile">
-    <GameStack.Screen name="Profile" component={ProfileScreen} />
+    <GameStack.Screen
+      name="Profile"
+      component={ProfileScreen}
+      options={{ headerShown: false }}
+    />
   </GameStack.Navigator>
 );
 

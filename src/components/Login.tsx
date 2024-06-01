@@ -6,7 +6,6 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import styled from "styled-components/native";
 
 const styles = StyleSheet.create({
   container: {

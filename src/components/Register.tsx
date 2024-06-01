@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import styled from "styled-components/native";
 
 const styles = StyleSheet.create({
   container: {
@@ -50,8 +49,6 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
 });
-
-const Button = styled.TouchableOpacity``;
 
 export interface ILogin {
   onSubmit: (email: string, password: string) => void;

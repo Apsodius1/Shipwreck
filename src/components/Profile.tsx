@@ -1,5 +1,26 @@
 import React from "react";
 import { useAuth } from "../hooks/authContext";
+import { StyleSheet, Text, View } from "react-native";
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#003f5c",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  logo: {
+    fontWeight: "bold",
+    fontSize: 50,
+
+    color: "#fb5b5a",
+    marginBottom: 40,
+  },
+  statText: {
+    color: "white",
+    fontSize: 20,
+  },
+});
 
 const Profile = () => {
   const auth = useAuth();
@@ -23,25 +44,25 @@ const Profile = () => {
     details;
 
   return (
-    <div>
-      <h1>User Details</h1>
-      <p>
+    <View style={styles.container}>
+      <Text style={styles.logo}>Player Profile</Text>
+      <Text style={styles.statText}>
         <strong>User: </strong> {user ? user.email : ""}
-      </p>
+      </Text>
 
-      <p>
+      <Text style={styles.statText}>
         <strong>Games Played:</strong> {gamesPlayed}
-      </p>
-      <p>
+      </Text>
+      <Text style={styles.statText}>
         <strong>Games Lost:</strong> {gamesLost}
-      </p>
-      <p>
+      </Text>
+      <Text style={styles.statText}>
         <strong>Games Won:</strong> {gamesWon}
-      </p>
-      <p>
+      </Text>
+      <Text style={styles.statText}>
         <strong>Currently Games Playing:</strong> {currentlyGamesPlaying}
-      </p>
-    </div>
+      </Text>
+    </View>
   );
 };
 
