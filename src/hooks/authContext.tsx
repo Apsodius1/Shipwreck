@@ -6,7 +6,13 @@ interface IAuthContext {
   token: string;
   login: (email: string, password: string) => Promise<void>;
   register: (email: string, password: string) => Promise<void>;
-  details: object | null;
+  details: {
+    user: { id: string; email: string };
+    gamesPlayed: number;
+    gamesLost: number;
+    gamesWon: number;
+    currentlyGamesPlaying: number;
+  };
   isLoading: boolean;
 }
 
@@ -14,7 +20,13 @@ const AuthContext = createContext<IAuthContext>({
   token: "",
   login: async () => {},
   register: async () => {},
-  details: { d: "" },
+  details: {
+    user: { id: "", email: "" },
+    gamesPlayed: 0,
+    gamesLost: 0,
+    gamesWon: 0,
+    currentlyGamesPlaying: 0,
+  },
   isLoading: false,
 });
 
@@ -23,20 +35,20 @@ export const AuthContextProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [token, setToken] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
-  const [userData, setUserData] = useState<any>({ haha: "haah" });
+  const [userData, setUserData] = useState<any>({});
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   AsyncStorage.getItem("token")
-  //     .then((value) => {
-  //       if (value !== null) {
-  //         setToken(value);
-  //       }
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  // }, []);
+  useEffect(() => {
+    setIsLoading(true);
+    AsyncStorage.getItem("token")
+      .then((value) => {
+        if (value !== null) {
+          setToken(value);
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
   const handleLogin = async (email: string, password: string) => {
     try {
