@@ -1,22 +1,55 @@
 import React, { useState } from "react";
-import { Text } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import styled from "styled-components/native";
 
-const Container = styled.View`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 50px;
-`;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#003f5c",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  inputView: {
+    width: "80%",
+    backgroundColor: "#465881",
+    borderRadius: 25,
+    height: 50,
+    marginBottom: 20,
+    justifyContent: "center",
+    padding: 20,
+  },
+  inputText: {
+    height: 50,
+    color: "white",
+  },
+  loginText: {
+    color: "white",
+    fontSize: 20,
+  },
+  loginBtn: {
+    width: "80%",
+    backgroundColor: "#fb5b5a",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 40,
+    marginBottom: 10,
+  },
+  logo: {
+    fontWeight: "bold",
+    fontSize: 50,
 
-const Input = styled.TextInput`
-  width: 100%;
-  height: 30px;
-  border: 1px solid;
-  margin-bottom: 10px;
-  padding: 8px;
-`;
+    color: "#fb5b5a",
+    marginBottom: 40,
+  },
+});
 
 const Button = styled.TouchableOpacity``;
 
@@ -24,20 +57,39 @@ export interface ILogin {
   onSubmit: (email: string, password: string) => void;
 }
 
-const Register = ({ onSubmit }) => {
+const Register = ({ onSubmit, goToLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = () => onSubmit(email, password);
 
   return (
-    <Container>
-      <Input keyboardType="email-address" onChangeText={setEmail} />
-      <Input secureTextEntry onChangeText={setPassword} />
-      <Button onPress={handleSubmit}>
-        <Text>Submit</Text>
-      </Button>
-    </Container>
+    <View style={styles.container}>
+      <Text style={styles.logo}>Register</Text>
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.inputText}
+          placeholder="Email..."
+          placeholderTextColor="#003f5c"
+          onChangeText={setEmail}
+        />
+      </View>
+      <View style={styles.inputView}>
+        <TextInput
+          secureTextEntry
+          style={styles.inputText}
+          placeholder="Password..."
+          placeholderTextColor="#003f5c"
+          onChangeText={setPassword}
+        />
+      </View>
+      <TouchableOpacity style={styles.loginBtn} onPress={handleSubmit}>
+        <Text style={styles.loginText}>Register</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={goToLogin}>
+        <Text style={styles.loginText}>Back to Login</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 

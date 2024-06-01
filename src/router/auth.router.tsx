@@ -7,7 +7,6 @@ const AuthStack = createNativeStackNavigator();
 
 const authRoutes = (
   <AuthStack.Navigator initialRouteName="Login">
-    {/* todo : add router names to route file */}
     <AuthStack.Screen name="Login" component={LoginScreen} />
     <AuthStack.Screen name="Register" component={RegisterScreen} />
   </AuthStack.Navigator>

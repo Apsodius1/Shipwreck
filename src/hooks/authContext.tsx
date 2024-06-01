@@ -37,22 +37,21 @@ export const AuthContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState<any>({});
 
-  useEffect(() => {
-    setIsLoading(true);
-    AsyncStorage.getItem("token")
-      .then((value) => {
-        if (value !== null) {
-          setToken(value);
-        }
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, []);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   AsyncStorage.getItem("token")
+  //     .then((value) => {
+  //       if (value !== null) {
+  //         setToken(value);
+  //       }
+  //     })
+  //     .finally(() => {
+  //       setIsLoading(false);
+  //     });
+  // }, []);
 
   const handleLogin = async (email: string, password: string) => {
     try {
-      console.log("login called");
       const result = await login(email, password);
       setToken(result);
       await AsyncStorage.setItem("token", result);
@@ -62,7 +61,6 @@ export const AuthContextProvider: React.FC<{ children: React.ReactNode }> = ({
   };
   const handleRegister = async (email: string, password: string) => {
     try {
-      console.log("register called");
       const result = await register(email, password);
       setToken(result);
       await AsyncStorage.setItem("token", result);
@@ -74,7 +72,6 @@ export const AuthContextProvider: React.FC<{ children: React.ReactNode }> = ({
     setIsLoading(true);
     try {
       const result = await getProfile(token);
-      console.log("details called", result, " .");
       setUserData(result);
     } catch (error) {
       console.log(error);

@@ -18,7 +18,6 @@ const Profile = () => {
   if (!details) {
     return <div>Loading...</div>;
   }
-  console.log("details:", details);
 
   var { user, gamesPlayed, gamesLost, gamesWon, currentlyGamesPlaying } =
     details;
